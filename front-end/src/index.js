@@ -5,6 +5,5 @@ import GameContainer from './components/game_container';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
     <GameContainer />
 );
