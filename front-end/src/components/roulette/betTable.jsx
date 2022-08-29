@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 
@@ -17,7 +17,7 @@ grid-row-gap: 0px;
 
     const givePrize = () => {
         
-        if (winColor == 'red') 
+        if (winColor === 'red') 
         {  
             setGiveBetLocal(false)
             setBet((prev) => prev >= 0 ? prev + 500 : prev + 500)
