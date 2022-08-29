@@ -27,8 +27,8 @@ letter-spacing: 3px;
 }
 `
 
-const Header = () => {
-    const [balance, setBalance] = useState(5000)
+const Header = ({balance, setBalance}) => {
+    
     return (
         <Container>
             <Logo>

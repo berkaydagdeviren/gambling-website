@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 
-const BetTable = ({winColor, giveBet, handleGivePrize}) => {
+const BetTable = ({winColor, giveBet, handleGivePrize, balance, setBalance}) => {
 
-    const [bet, setBet] = useState(0)
     const [giveBetLocal, setGiveBetLocal] = useState(true)
 
     const Grid = styled.div`
@@ -20,11 +19,11 @@ grid-row-gap: 0px;
         if (winColor === 'red') 
         {  
             setGiveBetLocal(false)
-            setBet((prev) => prev >= 0 ? prev + 500 : prev + 500)
+            setBalance((prev) => prev + 500)
         }
         else{ 
             setGiveBetLocal(false) 
-            setBet((prev) => prev - 500)
+            setBalance((prev) => prev - 500)
         }
         
     }
@@ -41,11 +40,6 @@ grid-row-gap: 0px;
         <Grid>
             <div>
                 <h1 style={{backgroundColor: 'red', color: 'white', borderRadius: '25%', textAlign: 'center'}}>Red</h1>
-                <section>
-                    {bet}
-                </section>
-                <button onClick={() => setBet(prevState => prevState + 500)}>Bet</button>
-                
             </div>
             <div>
                 <h1 style={{backgroundColor: 'green', color: 'white', borderRadius: '25%', textAlign: 'center'}}>Green</h1>
@@ -54,6 +48,9 @@ grid-row-gap: 0px;
                 <h1 style={{backgroundColor: 'black', color: 'white', borderRadius: '25%', textAlign: 'center'}}>
                     Black
                 </h1>
+            </div>
+            <div>
+                <input type="text" />
             </div>
         </Grid>
     )

@@ -92,7 +92,7 @@ const prizeList = reproducedPrizeList.map((prize) => ({
   id: generateId(),
 }));
 
-const Roulette = () => {
+const Roulette = ({balance, setBalance}) => {
   const [start, setStart] = useState(false);
   const [counter, setCounter] = useState(10);
   const [winColor, setWinColor] = useState(null)
@@ -141,7 +141,12 @@ const Roulette = () => {
         onPrizeDefined={handlePrizeDefined}
         spinningTime={10}
       />
-      <BetTable winColor={winColor} giveBet={givePrize} handleGivePrize={handleGivePrize} />
+      <BetTable 
+      winColor={winColor} 
+      giveBet={givePrize} 
+      handleGivePrize={handleGivePrize} 
+      balance={balance}
+      setBalance={setBalance} />
     </>
   );
 };
