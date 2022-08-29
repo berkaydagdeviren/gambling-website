@@ -1,7 +1,7 @@
 import React, { useState } from  'react';
 import RoulettePro from 'react-roulette-pro';
 import 'react-roulette-pro/dist/index.css';
-
+import BetTable from './betTable';
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -95,9 +95,13 @@ const prizeList = reproducedPrizeList.map((prize) => ({
 const Roulette = () => {
   const [start, setStart] = useState(false);
   const [counter, setCounter] = useState(10);
+  const [winColor, setWinColor] = useState(null)
+  const [givePrize, setGivePrize] = useState(false)
   let prizeIndex = getRandomInt(prizeList.length);
   if (prizeIndex <= 20)
     prizeIndex += 30
+  else if (prizeIndex >= prizeList.length - 10)
+    prizeIndex -= 10
    React.useEffect(() => {
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
@@ -113,9 +117,16 @@ const Roulette = () => {
 
   const handlePrizeDefined = async () => {
     console.log(`You have won ${prizeList[prizeIndex]['color']} ${prizeList.length} ${prizeIndex}`);
+    setWinColor(prizeList[prizeIndex]['color'])
+    setGivePrize(true)
     setStart(false);
     setCounter(15)
+    //setGivePrize(false)
   };
+
+  const handleGivePrize = () => {
+    setGivePrize(false)
+  }
 
   return (
     <>
@@ -130,6 +141,7 @@ const Roulette = () => {
         onPrizeDefined={handlePrizeDefined}
         spinningTime={10}
       />
+      <BetTable winColor={winColor} giveBet={givePrize} handleGivePrize={handleGivePrize} />
     </>
   );
 };
