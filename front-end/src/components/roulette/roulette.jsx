@@ -102,10 +102,11 @@ const Roulette = ({balance, setBalance}) => {
     prizeIndex += 30
   else if (prizeIndex >= prizeList.length - 10)
     prizeIndex -= 10
-   React.useEffect(() => {
+   React.useEffect(() => {  
     const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
       console.log(counter)
+      
       if (counter === 0)
       {
       setStart(true)
